@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{% block title %}Proyecto API{% endblock %}</title>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="../static/css/style.css">
+   </head>
+   <body>
+
+      <header class="cabecera">
+         <div class="contenedor-cabecera">
+            <a href="/" class="logo"><img class= "logo" src="../static/images/logo.png"></a>
+            <nav class="menu-principal">
+               <ul>
+                  <li><a href="/">Inicio</a></li>
+                  <li><a href="/buscador">Buscador</a></li>
+               </ul>
+            </nav>
+         </div>
+      </header>
+      <!-- contenido -->
+         {% block content %}{% endblock %}
+      <!-- fin del contenido -->
+      <!-- footer -->
+      <footer class="pie-de-pagina">
+         <div class="contenedor-pie">
+            <p>Este trabajo está licenciado bajo <a href="http://creativecommons.org/licenses/by-nc/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""></a>. Proyecto de Francisco Javier Huete basado en una plantilla generada por <a href="https://gemini.google.com">Gemini.</a></p>
+         </div>
+      </footer>
+      <!-- fin del footer -->
+   </body>
+</html>
+

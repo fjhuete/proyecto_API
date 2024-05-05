@@ -1,0 +1,237 @@
+/* Restablecer estilos predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fuente principal */
+@font-face {
+    font-family: 'Poppins';
+    src: url("fonts/Poppins-Regular.tff");
+}
+
+/* Responsive (adaptarse a dispositivos móviles) */
+@media (max-width: 768px) {
+    .contenedor-cabecera {
+        flex-direction: column; /* Apila el logo y el menú verticalmente */
+        align-items: flex-start; /* Alinea el logo y el menú a la izquierda */
+        background-color: none;
+    }
+
+    .menu-principal {
+        margin-top: 10px; /* Añade espacio entre el logo y el menú */
+    }
+
+    .menu-principal li {
+        margin-right: 0; /* Elimina el margen derecho entre elementos del menú */
+    }
+}
+
+/* Contenedor principal */
+.contenedor {
+    width: 100%;
+    margin: 0 auto;
+    font-family: 'Poppins','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    display: flex; /* Habilitar flexbox */
+    flex-direction: column; /* Ordenar elementos en columna */
+    align-items: center; /* Alinear horizontalmente al centro */
+    justify-content: center; /* Alinear verticalmente al centro */
+    min-height: 100vh; /* Altura mínima del contenedor */
+    background-color:whitesmoke ;
+}
+
+/* Títulos */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 5%;
+}
+
+h1 {
+    font-size: 2.5em;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+/* Párrafos */
+p {
+    text-align: justify;
+    line-height: 1.6;
+    font-family: "Rubik",sans-serif;
+}
+
+a {
+    color:#e839ff;
+}
+
+a:hover {
+    color:black;
+}
+
+/* Imágenes */
+.img {
+    max-width: 500px;
+    height: auto;
+}
+
+.img-small {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Cabecera */
+.cabecera {
+    background-color: whitesmoke; 
+    background-image: url(../images/header.gif);
+    padding: 20px 0;
+}
+
+.contenedor-cabecera {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex; /* Permite que el logo y el menú estén en línea */
+    justify-content: space-between; /* Distribuye los elementos horizontalmente */
+    align-items: center; /* Alinea los elementos verticalmente */
+}
+
+.logo {
+    text-decoration: none;
+    color: #333; /* Color del logo */
+    font-size: 1.6em;
+    max-width: 30px;
+    height: auto;
+}
+
+.menu-principal {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Rubik",sans-serif;
+}
+
+.menu-principal ul {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-principal li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.menu-principal a {
+    text-decoration: none;
+    color: #333; /* Color de los enlaces del menú */
+    font-size: 1em;
+}
+
+.menu-principal a:hover {
+    color: #f8db8d; /* Color de los enlaces al pasar el cursor */
+}
+
+/* Formulario */
+form {
+    margin-bottom: 40px;
+    font-family: 'Rubik';
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e839ff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 2%;
+    margin-bottom: 10%;
+}
+
+option {
+    font-family: 'Rubik';
+}
+
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #e839ff;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-top: 2%;
+    margin-bottom: 10%;
+    font-family: 'Rubik';
+
+}
+
+button[type="submit"] {
+    background-color: #e839ff;
+    color: #f8db8d;
+    margin-top: 3%;
+    margin-left: 0%;
+    margin-bottom: 20%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover{
+    background-color: #f8db8d;
+    color: #e839ff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Rubik';
+
+}
+
+/* Tabla */
+table {
+    width: 80%; /* Ancho de la tabla */
+    max-width: 1000px; /* Ancho máximo de la tabla */
+    margin: 40px auto; /* Margen superior e inferior de 40px, centrada horizontalmente */
+    border-collapse: collapse;
+    font-family: 'Rubik';
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #e839ff;
+    text-align: left;
+}
+
+th {
+    background-color: #f8db8d;
+    font-family: 'Montserrat';
+}
+
+.detalles {
+    border: 1px transparent;
+    background-color: whitesmoke;
+    text-align: center;
+}
+
+/* Pie de página */
+.pie-de-pagina {
+    position: auto;
+    width: 100%;
+    background-color: #f8db8d;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.contenedor-pie {
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+}

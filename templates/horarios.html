@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Horarios{% endblock %}
+{% block content %}
+<section class="contenedor">
+    <h2>Horarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Lunes a viernes</th>
+                    <th>Fines de semana</th>
+                </tr>
+            </thead>
+            <tbody>
+                    
+                <tr>
+                {% for hora in idalv %}
+                    <td>{{hora}}</td>
+                {% endfor -%}
+                {% for hora in idafs %}
+                    <td>{{hora}}</td>
+                {% endfor -%}
+                </tr>
+                    
+            </tbody>
+        </table>
+</section>
+{% endblock %}

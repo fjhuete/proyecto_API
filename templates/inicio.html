@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<section class="contenedor">
+    <h1>Buscador</h1>
+    {% if seleccionado %}
+    <form action="/lineas" method="post">
+    {% else %}
+    <form action="/" method="post">
+    {% endif %}
+        <label for="consorcio">Consorcio:</label>
+        <select id="consorcio" name="consorcio">
+        {% for consorcio in consorcios %} 
+            {% if seleccionado == consorcio.id %}
+                <option selected.value="{{consorcio.id}}">{{consorcio.nombre}}</option>
+            {% else %}
+                <option value="{{consorcio.id}}">{{consorcio.nombre}}</option>
+            {% endif %}
+        {% endfor %}
+        </select>
+      
+      {% if seleccionado %}
+        <label for="municipio">Municipio:</label>
+        <select id="municipio" name="municipio">
+        {% for municipio in municipios %} 
+            {% if seleccionado == municipio.id %}
+                <option selected.value="{{municipio.id}}">{{municipio.nombre}}</option>
+            {% else %}
+                <option value="{{municipio.id}}">{{municipio.nombre}}</option>
+            {% endif %}
+        {% endfor %}
+        </select>
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha">
+        <br>
+      {% endif %}
+
+      {% if seleccionado %}
+        <button type="submit">Ver líneas</button>
+      {% else %}
+        <button type="submit">Siguiente</button>
+      {% endif %}
+    </form>
+ </section>
+{% endblock %}
