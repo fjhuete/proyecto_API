@@ -33,6 +33,7 @@ def lineas():
     municipio = int(request.form.get("municipio"))
     fecha = request.form.get("fecha")
     r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/municipios/"+str(municipio)+"/lineas")
+    p=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/paradas")
     lineas=[]
     for i in r.json()["lineas"]:
         linea = {}
@@ -40,25 +41,61 @@ def lineas():
         linea["nombre"] = i["nombre"]
         linea["modo"] = i["modo"]
         lineas.append(linea)
-    return render_template("lineas.html",lista=lineas,consorcio=consorcio,municipio=municipio,fecha=fecha)
+    paradas=[]
+    for i in p.json()["paradas"]:
+        parada={}
+        if i["idMunicipio"] == str(municipio):
+            parada["nombre"]=i["nombre"]
+            parada["id"]=i["idParada"]
+            parada["latitud"]=i["latitud"]
+            parada["longitud"]=i["longitud"]
+            paradas.append(parada)
+    return render_template("lineas.html",lista=lineas,consorcio=consorcio,municipio=municipio,fecha=fecha,paradas=paradas)
 
 @app.route('/horarios')
 def horarios():
+    error =False
     consorcio = int(request.args.get("consorcio"))
     linea = int(request.args.get("linea"))
     fecha= request.args.get("fecha")
-    dia = fecha[:2]
-    mes = fecha[3:5]
+    dia = fecha[8:]
+    mes = fecha[5:7]
     r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/horarios_lineas?dia="+str(dia)+"&frecuencia=&lang=ES&linea="+str(linea)+"&mes="+str(mes))
+    n=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/noticias")
+    p=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/paradas")
     idalv = []
     idafs = []
-    for i in r.json()["planificadores"][0]["horarioIda"]:
-        if i["frecuencia"] == "LV":
-            idalv.append(i["horas"])
-        else:
-            idafs.append(i["horas"])
-    return render_template("horarios.html",idalv=idalv,idafs=idafs)
+    try:
+        for i in r.json()["planificadores"][0]["horarioIda"]:
+            if i["frecuencia"] == "LV":
+                idalv.append(i["horas"])
+            else:
+                idafs.append(i["horas"])
+    except:
+        error=True
+    noticias=[]
+    if n:
+        for i in n.json()["noticias"]:
+            noticia={}
+            noticia["categoria"]=i["categoria"]
+            noticia["titulo"]=i["titulo"]
+            noticia["resumen"]=i["resumen"]
+            noticias.append(noticia)
+    paradas=[]
+    for i in p.json()["paradas"]:
+        parada={}
+        parada["nombre"]=i["nombre"]
+        paradas.append(parada)
+    return render_template("horarios.html",idalv=idalv,idafs=idafs,error=error,noticias=noticias,paradas=paradas)
 
+@app.route('/paradas')
+def paradas():
+    consorcio = int(request.args.get("consorcio"))
+    parada = int(request.args.get("parada"))
+    fecha= request.args.get("fecha")
+    r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/paradas/"+str(parada))
+    datosparada=r.json()
+    return render_template("paradas.html",parada=datosparada)
 
 
 app.run("0.0.0.0",port,debug=True)

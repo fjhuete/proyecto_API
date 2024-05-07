@@ -13,8 +13,27 @@
             <tbody>
                     {% for elemento in lista %}
                 <tr>
-                    <td><a href="/horarios?consorcio={{consorcio}}&?linea={{elemento.id}}&?fecha={{fecha}}">{{elemento.nombre}}</a></td>
+                    <td><a href="/horarios?consorcio={{consorcio}}&linea={{elemento.id}}&fecha={{fecha}}">{{elemento.nombre}}</a></td>
                     <td>{{elemento.modo}}</td>
+                </tr>
+                    {% endfor -%}
+            </tbody>
+        </table>
+</section>
+<section class="contenedor">
+    <h2>Paradas</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nº Parada</th>
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for parada in paradas %}
+                <tr>
+                    <td><a href="/paradas?consorcio={{consorcio}}&parada={{parada.id}}&fecha={{fecha}}">{{parada.id}}</a></td>
+                    <td>{{parada.nombre}}</td>
                 </tr>
                     {% endfor -%}
             </tbody>
