@@ -4,7 +4,7 @@ import os
 import requests
 
 app = Flask(__name__)
-port = os.getenv("PORT")
+port = os.environ("PORT")
 key = os.environ("key")
 payload = {'key':key}
 
