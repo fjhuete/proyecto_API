@@ -7,7 +7,6 @@ app = Flask(__name__)
 port = os.getenv("PORT")
 key = os.environ("key")
 payload = {'key':key}
-key="2mRekTJ50FC81G1AJpBdfqj4qWvWvaaz"
 
 @app.route('/', methods=["GET","POST"])
 def inicio():
