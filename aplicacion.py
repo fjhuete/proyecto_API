@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 port = os.getenv("PORT")
-key = os.environ("key")
+key = os.getenv("key")
 payload = {'key':key}
 
 @app.route('/', methods=["GET","POST"])
