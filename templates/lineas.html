@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Líneas{% endblock %}
 {% block content %}
-<section class="contenedor">
+<section class="contenedor-principal">
+<div class="contenedor-izquierda">
     <h2>Líneas</h2>
         <table>
             <thead>
@@ -19,8 +20,8 @@
                     {% endfor -%}
             </tbody>
         </table>
-</section>
-<section class="contenedor">
+</div>
+<div class="contenedor-derecha">
     <h2>Paradas</h2>
         <table>
             <thead>
@@ -32,11 +33,12 @@
             <tbody>
                     {% for parada in paradas %}
                 <tr>
-                    <td><a href="/paradas?consorcio={{consorcio}}&parada={{parada.id}}&fecha={{fecha}}">{{parada.id}}</a></td>
+                    <td><a href="/parada?consorcio={{consorcio}}&parada={{parada.id}}&fecha={{fecha}}">{{parada.id}}</a></td>
                     <td>{{parada.nombre}}</td>
                 </tr>
                     {% endfor -%}
             </tbody>
         </table>
+</div>
 </section>
 {% endblock %}

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-<section class="contenedor">
+<section class="contenedor-principal">
+<section class="contenedor-izquierda">
     <h1>Buscador</h1>
     {% if seleccionado %}
     <form action="/lineas" method="post">
@@ -10,12 +11,12 @@
     {% endif %}
         <label for="consorcio">Consorcio:</label>
         <select id="consorcio" name="consorcio">
-        {% for consorcio in consorcios %} 
+        {% for consorcio in consorcios %}
             {% if seleccionado == consorcio.id %}
-                <option selected.value="{{consorcio.id}}">{{consorcio.nombre}}</option>
+                <option selected.value="{{consorcio.id}}">{{consorcio.nombre}} - {{consorcio.id}}</option>
             {% else %}
                 <option value="{{consorcio.id}}">{{consorcio.nombre}}</option>
-            {% endif %}
+            {% endif %} 
         {% endfor %}
         </select>
       
@@ -31,7 +32,7 @@
         {% endfor %}
         </select>
         <label for="fecha">Fecha</label>
-        <input type="date" id="fecha" name="fecha">
+        <input type="datetime-local" id="fecha" name="fecha" value="{{fechaactual}}">
         <br>
       {% endif %}
 
@@ -41,5 +42,9 @@
         <button type="submit">Siguiente</button>
       {% endif %}
     </form>
+ </section>
+ <section class="contenedor-derecha">
+  <img src="static/images/imagen.png">
+ </section>
  </section>
 {% endblock %}

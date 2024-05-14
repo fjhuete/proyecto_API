@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 
-/* Fuente principal */
+/* Importar fuente 'Poppins' */
 @font-face {
     font-family: 'Poppins';
     src: url("fonts/Poppins-Regular.tff");
@@ -28,17 +28,67 @@
     }
 }
 
-/* Contenedor principal */
+/* Contenedores de contenido */
 .contenedor {
     width: 100%;
     margin: 0 auto;
-    font-family: 'Poppins','Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: "Poppins", sans-serif;
+    background-color: whitesmoke;
     display: flex; /* Habilitar flexbox */
     flex-direction: column; /* Ordenar elementos en columna */
-    align-items: center; /* Alinear horizontalmente al centro */
+    align-items: center ; /* Alinear horizontalmente al centro */
     justify-content: center; /* Alinear verticalmente al centro */
+}
+
+/* Contenedor principal */
+.contenedor-principal {
+    width: 100%;
+    margin: 0 auto;
+    font-family: "Poppins",'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: whitesmoke ; /* Dark green background */
     min-height: 100vh; /* Altura mínima del contenedor */
-    background-color:whitesmoke ;
+    display: flex; /* Habilitar flexbox */
+}
+
+/* Contenedor izquierda */
+.contenedor-izquierda {
+    width: 50%; /* Ancho del contenedor izquierdo */
+    padding: 20px;
+}
+
+/* Contenedor derecha */
+.contenedor-derecha {
+    width: 50%; /* Ancho del contenedor derecho */
+    padding: 20px;
+}
+
+/* Títulos dentro de los contenedores */
+.contenedor-izquierda h1, .contenedor-izquierda h2, .contenedor-izquierda h3
+.contenedor-derecha h1, .contenedor-derecha h2, .contenedor-derecha h3 {
+    text-align: center;
+}
+
+/* Párrafos dentro de los contenedores */
+.contenedor-izquierda p, .contenedor-derecha p {
+    text-align: left; /* Alineación de párrafos a la izquierda */
+}
+
+/* Imágenes dentro de los contenedores */
+.contenedor-izquierda img, .contenedor-derecha img {
+    max-width: 100%; /* Ajustar ancho de imágenes al contenedor */
+    height: auto; /* Mantener relación de aspecto de las imágenes */
+}
+
+/* Media query para pantallas pequeñas */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; /* Apilar contenedores verticalmente */
+    }
+
+    .contenedor-izquierda, .contenedor-derecha {
+        width: 100%; /* Ancho completo para cada contenedor */
+        margin-bottom: 20px; /* Espacio entre contenedores */
+    }
 }
 
 /* Títulos */
@@ -50,25 +100,37 @@ h1, h2 {
 
 h1 {
     font-size: 2.5em;
+    font-weight: 900;
 }
 
 h2 {
     font-size: 1.5em;
+    font-weight: 700;
+}
+
+h3 {
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+h4 {
+    font-size: 1.5em;
+    font-weight: 300;
 }
 
 /* Párrafos */
 p {
     text-align: justify;
     line-height: 1.6;
-    font-family: "Rubik",sans-serif;
+    font-family: "Poppins",sans-serif;
 }
 
 a {
-    color:#e839ff;
+    color:#017a33;
 }
 
 a:hover {
-    color:black;
+    color:#bd80a4;
 }
 
 /* Imágenes */
@@ -84,8 +146,8 @@ a:hover {
 
 /* Cabecera */
 .cabecera {
-    background-color: whitesmoke; 
-    background-image: url(../images/header.gif);
+    background-color: #017a33; 
+    color: #bd80a4;
     padding: 20px 0;
 }
 
@@ -100,7 +162,6 @@ a:hover {
 
 .logo {
     text-decoration: none;
-    color: #333; /* Color del logo */
     font-size: 1.6em;
     max-width: 30px;
     height: auto;
@@ -110,7 +171,7 @@ a:hover {
     list-style: none;
     margin: 0;
     padding: 0;
-    font-family: "Rubik",sans-serif;
+    font-family: "Poppins",sans-serif;
 }
 
 .menu-principal ul {
@@ -125,18 +186,18 @@ a:hover {
 
 .menu-principal a {
     text-decoration: none;
-    color: #333; /* Color de los enlaces del menú */
+    color: white; /* Color de los enlaces del menú */
     font-size: 1em;
 }
 
 .menu-principal a:hover {
-    color: #f8db8d; /* Color de los enlaces al pasar el cursor */
+    color: #bd80a4; /* Color de los enlaces al pasar el cursor */
 }
 
 /* Formulario */
 form {
     margin-bottom: 40px;
-    font-family: 'Rubik';
+    font-family: "Poppins";
 }
 
 label {
@@ -148,7 +209,7 @@ label {
 select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #e839ff;
+    border: 1px solid #017a33;
     border-radius: 5px;
     box-sizing: border-box;
     margin-top: 2%;
@@ -156,25 +217,12 @@ select {
 }
 
 option {
-    font-family: 'Rubik';
-}
-
-input[type="text"],
-input[type="email"] {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #e839ff;
-    border-radius: 5px;
-    box-sizing: border-box;
-    margin-top: 2%;
-    margin-bottom: 10%;
-    font-family: 'Rubik';
-
+    font-family: 'Poppins';
 }
 
 button[type="submit"] {
-    background-color: #e839ff;
-    color: #f8db8d;
+    background-color: #017a33;
+    color: #bd80a4;
     margin-top: 3%;
     margin-left: 0%;
     margin-bottom: 20%;
@@ -185,13 +233,13 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover{
-    background-color: #f8db8d;
-    color: #e839ff;
+    background-color: #bd80a4;
+    color: #017a33;
     padding: 12px 20px;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-family: 'Rubik';
+    font-family: 'Poppins';
 
 }
 
@@ -201,18 +249,19 @@ table {
     max-width: 1000px; /* Ancho máximo de la tabla */
     margin: 40px auto; /* Margen superior e inferior de 40px, centrada horizontalmente */
     border-collapse: collapse;
-    font-family: 'Rubik';
+    font-family: 'Poppins';
 }
 
 th, td {
     padding: 8px;
-    border: 1px solid #e839ff;
+    border: 1px solid #bd80a4;
     text-align: left;
 }
 
 th {
-    background-color: #f8db8d;
-    font-family: 'Montserrat';
+    background-color: #7a0148;
+    color: whitesmoke;
+    font-family: 'Poppins';
 }
 
 .detalles {
@@ -221,11 +270,19 @@ th {
     text-align: center;
 }
 
+.tiempo {
+    text-decoration: none;
+    font-size: 1.6em;
+    width: 20%;
+    height: auto;
+}
+
 /* Pie de página */
 .pie-de-pagina {
     position: auto;
     width: 100%;
-    background-color: #f8db8d;
+    color: white;
+    background-color: #7a0148;
     padding: 20px 0;
     text-align: center;
 }

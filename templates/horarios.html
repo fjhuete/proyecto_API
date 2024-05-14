@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Horarios{% endblock %}
 {% block content %}
-<section class="contenedor">
+<section class="contenedor-principal">
+<div class="contenedor-derecha">
     <h1>Paradas</h1>
     <table>
         <thead>
@@ -11,13 +12,15 @@
         </thead>
     {% for parada in paradas %}
     <tr>
-    <td>{{parada.nombre}}</td>
+    <td><a href="/parada?consorcio={{consorcio}}&parada={{parada.id}}&fecha={{fecha}}">{{parada.nombre}}</a></td>
     </tr>
     {% endfor -%}
     </table>
+</div>
+<div class="contenedor-izquierda">
     <h1>Horarios</h1>
     {% if error %}
-    <p>No hay horarios disponibles en la fecha seleccinada.</p>
+    <p>No hay horarios disponibles en la fecha seleccionada.</p>
     {% else %}
         <table>
             <thead>
@@ -32,26 +35,23 @@
             </thead>
             <tbody> 
             {% if idalv %}
-                {% for franja in idalv %}
-                    {% for hora in franja %}
-                        <tr>
-                        <td>{{hora}}</td>
-                        </tr>
-                    {% endfor -%}
+                {% for hora in idalv %}
+                    <tr>
+                    <td>{{hora}}</td>
+                    </tr>
                 {% endfor -%}
             {% endif %}
             {% if idafs %}
-                {% for franja in idafs %}
-                    {% for hora in franja %}
-                        <tr>
-                        <td>{{hora}}</td>
-                        </tr>
-                    {% endfor -%}
+                {% for hora in idafs %}
+                    <tr>
+                    <td>{{hora}}</td>
+                    </tr>
                 {% endfor -%}
             {% endif %}
             </tbody>
         </table>
     {% endif %}
+</div>
     {% if noticias %}
     <h1>Avisos</h1>
         {% for noticia in noticias %}

@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg2"
+   width="1024"
+   height="400"
+   viewBox="0 0 1024 400"
+   sodipodi:docname="imagen.svg"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:export-filename="/home/fj_huete/Dropbox/ASIR/Lenguaje de marcas/Git/proyecto_API/static/images/imagen.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs6">
+    <linearGradient
+       inkscape:collect="always"
+       id="linearGradient1106">
+      <stop
+         style="stop-color:#017a33;stop-opacity:1"
+         offset="0"
+         id="stop1102" />
+      <stop
+         style="stop-color:#96fdae;stop-opacity:1"
+         offset="1"
+         id="stop1104" />
+    </linearGradient>
+    <inkscape:path-effect
+       effect="spiro"
+       id="path-effect954"
+       is_visible="true"
+       lpeversion="1" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient1106"
+       id="linearGradient1108"
+       x1="293.84402"
+       y1="533.23859"
+       x2="855.21393"
+       y2="-156.63435"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1378497,0,0,1.1378497,-112.83083,-20.56645)" />
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2431">
+      <rect
+         style="opacity:0.211684;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:37.7952;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect2433"
+         width="1030.1003"
+         height="977.99988"
+         x="-0.23170026"
+         y="-339.84851" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath2435">
+      <rect
+         style="opacity:0.211684;fill:#ff0000;fill-opacity:1;stroke:none;stroke-width:37.7952;stroke-linecap:round;stroke-linejoin:round;paint-order:stroke fill markers"
+         id="rect2437"
+         width="1030.1003"
+         height="977.99988"
+         x="-0.23170026"
+         y="-339.84851" />
+    </clipPath>
+  </defs>
+  <sodipodi:namedview
+     id="namedview4"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="0.20682873"
+     inkscape:cx="-529.42354"
+     inkscape:cy="713.15043"
+     inkscape:window-width="1366"
+     inkscape:window-height="712"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="g8" />
+  <g
+     inkscape:groupmode="layer"
+     inkscape:label="Image"
+     id="g8">
+    <path
+       style="fill:url(#linearGradient1108);fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 415.58392,624.2375 C 347.21692,623.91412 277.66849,609.91755 219.14489,574.57439 151.09679,533.47926 100.47283,462.26154 90.291546,383.42187 83.507614,330.88991 94.128466,277.87142 103.72629,225.78006 113.32412,173.68869 121.93057,119.96462 111.2227,68.090064 102.93131,27.922225 83.499515,-8.8933698 67.231605,-46.543835 50.963696,-84.1943 37.506383,-124.80863 42.250913,-165.54795 c 4.038269,-34.67494 21.399445,-67.15248 45.94219,-91.97814 24.542747,-24.82565 55.955077,-42.26391 89.186767,-52.9557 66.46338,-21.38357 138.21817,-16.26194 207.70991,-9.51395 93.48233,9.0776 187.55228,20.87888 276.30694,51.60282 88.75465,30.72395 172.71642,81.89757 228.55489,157.41853 67.44063,91.212759 88.14926,213.06763 63.77409,323.85507 C 929.35053,323.66812 862.33019,422.9059 774.56168,494.7717 674.15698,576.98415 545.35145,624.85131 415.58392,624.2375 Z"
+       id="path952"
+       inkscape:path-effect="#path-effect954"
+       inkscape:original-d="M 415.58392,624.2375 C 295.92353,667.39163 284.6257,591.1299 219.14489,574.57439 153.66407,558.01887 133.2438,447.14051 90.291546,383.42187 47.339297,319.70322 104.24678,173.2018 111.2227,68.090064 118.19861,-37.021675 65.242646,-87.667473 42.250913,-165.54795 19.25918,-243.42842 270.81129,-268.512 385.08978,-319.99574 499.36825,-371.47948 721.66547,-180.64703 889.95161,-110.97439 1058.2377,-41.301743 813.02613,292.85747 774.56168,494.7717 736.09722,696.68593 535.2443,581.08338 415.58392,624.2375 Z"
+       clip-path="url(#clipPath2435)" />
+    <image
+       width="1035.3094"
+       height="1464.462"
+       preserveAspectRatio="none"
+       style="stroke-width:0.766534;image-rendering:optimizeQuality"
+       xlink:href="../../../../../../../IU/Campa%C3%B1as/Campa%C3%B1a%20transporte/composici%C3%B3n2.png"
+       id="image915"
+       x="-11.405383"
+       y="-951.24713"
+       clip-path="url(#clipPath2431)" />
+  </g>
+</svg>
