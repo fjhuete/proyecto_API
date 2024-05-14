@@ -41,18 +41,18 @@
     <div class="contenedor-derecha">
     <iframe width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox={{parada.longitud}}%2C{{parada.latitud}}&amp;layer=mapnik"></iframe>
     {% if meteo.prevision == "lluvia" %}
+        <img class="tiempo" src="static/images/rain.gif">
         <p>No te olivdes el paraguas, parece que va a llover.</p>
-        <img src="static/images/rain.gif">
     {% elif meteo.prevision == "calor" %}
         <br>
         <img class="tiempo" src="static/images/hot.gif">
         <p>Parece que hará calor. Bebe mucha agua.</p>
     {% elif meteo.prevision == "frío" %}
+        <img class="tiempo" src="static/images/cold.gif">
         <p>Será un día frío. Coge algo de abrigo.</p>
-        <img src="static/images/cold.gif">
     {% elif meteo.prevision == "bueno" %}
-        <p>Hará un tiempo estupendo. Disfruta el viaje.</p>
         <img class="tiempo" src="static/images/sun.gif">
+        <p>Hará un tiempo estupendo. Disfruta el viaje.</p>
     {% endif %}
     <p>Consulta la <a href="{{meteo.link}}">previsión completa del tiempo</a></p>
     </div>
