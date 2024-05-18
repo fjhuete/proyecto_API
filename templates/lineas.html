@@ -14,7 +14,7 @@
             <tbody>
                     {% for elemento in lista %}
                 <tr>
-                    <td><a href="/horarios?consorcio={{consorcio}}&linea={{elemento.id}}&fecha={{fecha}}">{{elemento.nombre}}</a></td>
+                    <td><a href="/horarios?consorcio={{consorcio}}&linea={{elemento.id}}&fecha={{fecha}}&municipio={{municipio}}">{{elemento.nombre}}</a></td>
                     <td>{{elemento.modo}}</td>
                 </tr>
                     {% endfor -%}
