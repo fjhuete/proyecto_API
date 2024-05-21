@@ -5,7 +5,7 @@ import requests
 
 app = Flask(__name__)
 port = os.getenv("PORT")
-key = "2mRekTJ50FC81G1AJpBdfqj4qWvWvaaz"
+key = os.getenv("key")
 
 @app.route('/', methods=["GET","POST"])
 def inicio():
@@ -129,4 +129,4 @@ def parada():
     return render_template("parada.html",parada=datosparada,servicios=servicios,meteo=meteo,dia=dia,mes=mes,year=year,hora=hora)
 
 
-app.run("0.0.0.0",port,debug=True)
+app.run("0.0.0.0",port,debug=False)

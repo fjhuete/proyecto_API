@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Buscador{% endblock %}
+{% block content %}
+<section class="contenedor-principal">
+<section class="contenedor-izquierda">
+    <h1>Buscador - Municipios</h1>
+    <form action="/lineas/{{seleccionado}}" method="post">
+    <label for="municipio">Municipio:</label>
+        <select id="municipio" name="municipio">
+        {% for municipio in municipios %} 
+            {% if seleccionado == municipio.id %}
+                <option selected.value="{{municipio.id}}">{{municipio.nombre}}</option>
+            {% else %}
+                <option value="{{municipio.id}}">{{municipio.nombre}}</option>
+            {% endif %}
+        {% endfor %}
+        </select>
+    <label for="fecha">Fecha</label>
+        <input type="datetime-local" id="fecha" name="fecha" value="{{fechaactual}}">
+        <br>
+    <button type="submit">Ver líneas</button>
+    </form>
+</section>
+<section class="contenedor-derecha">
+    <img src="static/images/imagen.png">
+</section>
+</section>
+{% endblock %}
