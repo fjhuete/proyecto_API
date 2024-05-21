@@ -2,17 +2,15 @@ from flask import Flask, render_template, abort, redirect, request
 from datetime import datetime
 import os
 import requests
-URL_BASE="http://api.ctan.es/v1/"
-BASE_WEATHER="http://dataservice.accuweather.com/"
+
 app = Flask(__name__)
 port = os.getenv("PORT")
-key = os.getenv("key")
-payload = {'key':key}
+key = "2mRekTJ50FC81G1AJpBdfqj4qWvWvaaz"
 
 @app.route('/', methods=["GET","POST"])
 def inicio():
     fechaactual=datetime.today().strftime("%Y-%m-%dT%H:%M")
-    r=requests.get(URL_BASE+"Consorcios/consorcios")
+    r=requests.get("http://api.ctan.es/v1/Consorcios/consorcios")
     consorcios=[]
     for i in r.json()["consorcios"]:
         consorcio = {}
@@ -23,22 +21,21 @@ def inicio():
         return render_template("inicio.html",consorcios=consorcios)
     elif request.method == "POST":
         consorcio = int(request.form.get("consorcio"))
-        r=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/municipios/")
+        r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/municipios/")
         municipios=[]
         for i in r.json()["municipios"]:
             municipio = {}
             municipio["id"] = i["idMunicipio"]
             municipio["nombre"] = i["datos"]
             municipios.append(municipio)
-        return render_template("inicio.html",seleccionado=consorcio,consorcios=consorcios,municipios=municipios,fechaactual=fechaactual)
+        return render_template("municipios.html",seleccionado=consorcio,consorcios=consorcios,municipios=municipios,fechaactual=fechaactual)
 
-@app.route('/lineas', methods=["GET","POST"])
-def lineas():
-    consorcio = int(request.form.get("consorcio"))
+@app.route('/lineas/<consorcio>', methods=["GET","POST"])
+def lineas(consorcio):
     municipio = int(request.form.get("municipio"))
     fecha = request.form.get("fecha")
-    r=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/municipios/"+str(municipio)+"/lineas")
-    p=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/paradas")
+    r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/municipios/"+str(municipio)+"/lineas")
+    p=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/paradas")
     lineas=[]
     for i in r.json()["lineas"]:
         linea = {}
@@ -60,14 +57,19 @@ def lineas():
 @app.route('/horarios')
 def horarios():
     error =False
+    municipio = int(request.args.get("municipio"))
     consorcio = int(request.args.get("consorcio"))
     linea = int(request.args.get("linea"))
     fecha= request.args.get("fecha")
     dia = fecha[8:10]
     mes = fecha[5:7]
-    r=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/horarios_lineas?dia="+str(dia)+"&frecuencia=&lang=ES&linea="+str(linea)+"&mes="+str(mes))
-    n=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/noticias")
-    p=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/paradas")
+    r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/horarios_lineas?dia="+str(dia)+"&frecuencia=&lang=ES&linea="+str(linea)+"&mes="+str(mes))
+    n=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/noticias")
+    p=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/lineas/"+str(linea)+"/paradas")
+    l=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/municipios/"+str(municipio)+"/lineas")
+    for i in l.json()["lineas"]:
+        if i["idLinea"] == str(linea):
+            nombre = i["nombre"]
     idalv = []
     idafs = []
     try:
@@ -92,7 +94,7 @@ def horarios():
         parada["nombre"]=i["nombre"]
         parada["id"]=i["idParada"]
         paradas.append(parada)
-    return render_template("horarios.html",idalv=idalv,idafs=idafs,error=error,noticias=noticias,paradas=paradas,consorcio=consorcio,fecha=fecha)
+    return render_template("horarios.html",idalv=idalv,idafs=idafs,error=error,noticias=noticias,paradas=paradas,consorcio=consorcio,fecha=fecha,nombre=nombre)
 
 @app.route('/parada')
 def parada():
@@ -103,15 +105,15 @@ def parada():
     mes = fecha[5:7]
     year = fecha[:4]
     hora = fecha[11:]
-    r=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/paradas/"+str(parada))
-    s=requests.get(URL_BASE+"Consorcios/"+str(consorcio)+"/paradas/"+str(parada)+"/servicios?horaIni="+str(dia)+"-"+str(mes)+"-"+str(year)+"+"+str(hora))
+    r=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/paradas/"+str(parada))
+    s=requests.get("http://api.ctan.es/v1/Consorcios/"+str(consorcio)+"/paradas/"+str(parada)+"/servicios?horaIni="+str(dia)+"-"+str(mes)+"-"+str(year)+"+"+str(hora))
     datosparada=r.json()
     latlon=datosparada["latitud"]+","+datosparada["longitud"]
     servicios=s.json()["servicios"]
-    p=requests.get(BASE_WEATHER+"locations/v1/cities/geoposition/search?apikey="+key+"%20&q="+latlon+"&language=es")
+    p=requests.get("http://dataservice.accuweather.com/locations/v1/cities/geoposition/search?apikey="+key+"%20&q="+latlon+"&language=es")
     datoslocalizacion=p.json()
     codigo=datoslocalizacion["Key"]
-    t=requests.get(BASE_WEATHER+"forecasts/v1/daily/1day/"+codigo+"?apikey="+key+"%20&language=es&metric=true")
+    t=requests.get("http://dataservice.accuweather.com/forecasts/v1/daily/1day/"+codigo+"?apikey="+key+"%20&language=es&metric=true")
     tiempo=t.json()["DailyForecasts"]
     link=tiempo[0]["MobileLink"]
     if tiempo[0]["Day"]["HasPrecipitation"]:
@@ -123,7 +125,8 @@ def parada():
     else:
         prevision="bueno"
     meteo={"prevision":prevision,"link":link}
+    #meteo={"prevision":"calor","link":"https://www.accuweather.com/es/es/dos-hermanas/301891/weather-forecast/301891"}
     return render_template("parada.html",parada=datosparada,servicios=servicios,meteo=meteo,dia=dia,mes=mes,year=year,hora=hora)
 
 
-app.run("0.0.0.0",port,debug=False)
+app.run("0.0.0.0",port,debug=True)
